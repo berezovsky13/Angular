@@ -1,0 +1,24 @@
+body {
+    height: auto;
+}
+.slider {
+    height: 100vh !important;
+}
+img {
+    width: 100% !important;
+    max-width: 100vw;
+    max-height: 100vh;
+    height: auto !important;
+}
+ul {
+    height: 100% !important;
+    z-index: 10;
+}
+li {
+    height: inherit !important;
+}
+
+.login-modal-wrapper {
+    padding:24px;
+    line-height: 120%;
+}

@@ -1,0 +1,124 @@
+<div class="slider">
+  
+    <ul class="slides">
+     
+    <li>
+         
+        <img src="https://images.pexels.com/photos/848594/pexels-photo-848594.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"> <!-- random image -->
+        
+        <div class="caption center-align">
+              <h3>SPORT</h3>
+              <h5 class="">Come to purchase sport coupons.</h5>
+              <a class="waves-effect waves-light btn modal-trigger" href="#loginModal"><i class="material-icons left">cloud</i>Login</a>
+         
+            </div>
+    
+        </li>
+     
+        <li>
+          <img src="https://images.pexels.com/photos/165505/pexels-photo-165505.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"> <!-- random image -->
+          <div class="caption left-align">
+              <h3> Vacations</h3>
+              <h5 class="light grey-text text-lighten-3">purchase coupon for your dream vacation</h5>
+              <a class="waves-effect waves-light btn modal-trigger" href="#loginModal"><i class="material-icons left">cloud</i>Login</a>
+          </div>
+      </li>
+      <li>
+          <img src="https://images.pexels.com/photos/225236/pexels-photo-225236.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"> <!-- random image -->
+          <div class="caption left-align">
+              <h3>Restaraunt</h3>
+              <h5 class="light grey-text text-lighten-3">buy coupons for your favorite restaraunt</h5>
+              <a class="waves-effect waves-light btn modal-trigger" href="#loginModal"><i class="material-icons left">cloud</i>Login</a>
+          </div>
+      </li>
+      <li>
+          <img src="https://images.pexels.com/photos/267674/pexels-photo-267674.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"> <!-- random image -->
+          <div class="caption center-align">
+              <h3>And also your favorite books</h3>
+              <h5 class="light grey-text text-lighten-3">BOOKS.</h5>
+              <a class="waves-effect waves-light btn modal-trigger" href="#loginModal"><i class="material-icons left">cloud</i>Login</a>
+       
+            </div>
+    
+        </li>
+ 
+    </ul>
+
+</div>
+
+
+<div id="loginModal" class="modal zero-padding" >
+  
+    <div class="modal-content zero-padding">
+        <div *ngIf="isLoading" class="loader-modal-wrapper" >
+            <div class="preloader-wrapper big active loader-modal-cover">
+                <div class="spinner-layer spinner-blue-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="container login-modal-wrapper" >
+            
+            <form #formData="ngForm" >
+           
+                <div class="input" style="margin-top:5px;">
+              
+                    <label>Email</label>
+                  <!-- <input type="text" [(ngModel)]="loginUser.user" id="name" name="name"/> -->
+              
+                  <input #usernameData="ngModel" required minlength="3" type="text" placeholder="Username..." name="username"
+                      [(ngModel)]="userDetails.username">
+              
+                      <span *ngIf="usernameData.errors?.required && usernameData.touched">Missing username...</span>
+              
+                      <span *ngIf="usernameData.errors?.minlength && usernameData.touched">Username too short...</span>
+
+          
+                    </div>
+
+           
+                    <div class="input" style="margin-top:5px;">
+              
+                        <label>Password</label>
+                  <!-- <input type="text" [(ngModel)]="loginUser.password" id="password" name="password"/> -->
+              
+                  <input #passwordData="ngModel" password type="password" placeholder="Password..." name="password"
+                      [(ngModel)]="userDetails.password">
+              
+                      <span *ngIf="passwordData.invalid && passwordData.touched">Incorrect password...</span>
+
+             
+                    </div>
+             
+                    <div class="input" style="margin-top:5px;">
+                  <label>Type</label>
+                  <!-- <input type="text" [(ngModel)]="loginUser.password" id="password" name="password"/> -->
+                  <input #typeData="ngModel" type="text" placeholder="User Type..." name="Type"
+                      [(ngModel)]="userDetails.userType">
+             
+                    </div>
+             
+                    <div class="input" style="margin-top:5px;">
+                  <button class="btn blue" style="margin-top:5px;" (click)="login()">Login</button>
+                   </div>     
+                  <div class="red-text" style="margin-top:5px;"> {{errorMessage}} </div>
+            
+                
+        
+            </form>
+     
+        </div>
+
+   </div>
+
+</div>
+
+<!-- <button (click)="login(mockUser)"></button> -->

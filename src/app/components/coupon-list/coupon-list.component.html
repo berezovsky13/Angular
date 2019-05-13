@@ -1,0 +1,103 @@
+<div class="row">
+    <div class="input-field col s12">
+        <i class="material-icons prefix">search</i>
+        <input id="search_coupon" type="tel">
+        <label for="search_coupon">Search</label>
+      </div>
+  </div>
+
+
+  <div class="row">
+      <div *ngFor="let coupon of couponsList" class="col s12 m6 l4">
+        <div class="card">
+        <div class="card-image">
+          <img src={{coupon.image}}>
+         </div>
+         <div class="card-content" style="height: 200px;">
+          <span class="card-title">{{coupon.title}}</span>
+          <p>{{coupon.message}}</p>
+          <p>Expiry date: {{coupon.endDate}}</p>
+          <a class="btn" (click)="openEditCouponModal(coupon.couponID)">Edit this</a>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fixed-action-btn">
+      <a class="btn-floating btn-large red" (click)="openEditCouponModal(-1)">
+        <i class="large material-icons">library_add</i>
+      </a>
+    </div>
+
+<!-- Modal here -->
+
+<div id="editCouponModal" class="modal">
+  <div class="modal-content">
+    <h5>{{isEditMode ? "Edit Coupon" : "Create Coupon"}}</h5>
+    <form #formData="ngForm">
+
+      <div class="input" style="margin-top:5px;">
+        <label>Title</label>
+        <input #couponTitleData="ngModel" required minlength="3" type="text" placeholder="Title..." name="title"
+          [(ngModel)]="editedCoupon.title">
+      </div>
+
+      <div class="input" style="margin-top:5px;">
+        <label>Amount</label>
+        <input #couponAmountData="ngModel" required type="number" placeholder="Amount..." name="amount"
+          [(ngModel)]="editedCoupon.amount">
+      </div>
+
+      <div class="input" style="margin-top:5px;">
+        <label>Price</label>
+        <input #couponAmountData="ngModel" required type="number" placeholder="Price..." name="amount"
+          [(ngModel)]="editedCoupon.price">
+      </div>
+
+      <div class="input" style="margin-top:5px;">
+        <label>Message</label>
+        <input #couponAmountData="ngModel" required type="text" placeholder="Message..." name="message"
+          [(ngModel)]="editedCoupon.message">
+      </div>
+
+      <div class="input" style="margin-top:5px;">
+        <label>StartDate</label>
+        <input #couponAmountData="ngModel" required type="date" placeholder="StartDate..." name="start_date"
+          [(ngModel)]="editedCoupon.startDate">
+      </div>
+
+      <div class="input" style="margin-top:5px;">
+        <label>EndDate</label>
+        <input #couponAmountData="ngModel" required type="date" placeholder="EndDate..." name="end_date"
+          [(ngModel)]="editedCoupon.endDate">
+      </div>
+
+      <div class="input" style="margin-top:5px;">
+        <label>Image</label>
+        <input #couponAmountData="ngModel" required type="text" placeholder="Image..." name="image"
+          [(ngModel)]="editedCoupon.image">
+      </div>
+
+      <div class="input" style="margin-top:5px;">
+        <label>Type</label>
+        <input #couponAmountData="ngModel" required type="text" placeholder="Type..." name="type"
+          [(ngModel)]="editedCoupon.type">
+      </div>
+
+      <div class="input" style="margin-top:5px;">
+        <button *ngIf="isEditMode" class="btn red" style="margin-top:5px; margin-left:10px;" (click)="deleteCoupon(editedCoupon.couponID)">Delete</button>
+        <button *ngIf="isEditMode" class="btn yellow" style="margin-top:5px; margin-right:10px;" (click)="updateCoupon(editedCoupon.couponID)">Update</button>
+      </div>
+
+
+      
+      <div class="input" style="margin-top:5px;">
+        <button *ngIf="!isEditMode" class="btn green" style="margin-top:5px;" (click)="createCoupon(editedCoupon)">Create</button>
+      </div>
+
+
+      <div class="red-text" style="margin-top:5px;"> {{editErrorMessage}} </div>
+
+    </form>
+  </div>
+</div>
