@@ -1,0 +1,22 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center; align-content: center;">
+<div class="header">
+  <h1 *ngIf="ongoingGame">Current turn: Player {{playerTurn}}</h1>
+  <button *ngIf="!ongoingGame" (click)="newGame()">Start a new game</button>
+</div>
+<hr>
+<table class="table" *ngIf="board && board.rows">
+  <tr *ngFor="let row of board.rows; let i = index">
+    <td class="tableCell" *ngFor="let cell of row; let j = index" (click)="makeMove(j)">
+        <svg *ngIf="cell.hasCoin" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+          <circle [ngStyle]="{'fill': cell.playerNum == 1 ? 'red' : 'green'}" cx="25" cy="25" r="25"/>
+        </svg>
+    </td>
+  </tr>
+
+</table >
+  
+
+
+
+</div>
